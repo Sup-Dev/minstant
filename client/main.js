@@ -96,11 +96,11 @@ Template.chat_page.events({
         if (chat) {// ok - we have a chat to use
             console.log("update chat");
             var msgs = chat.messages; // pull the messages property
-            console.log(msgs);
+            //console.log(msgs);
             if (!msgs) {// no messages yet, create a new array
                 msgs = [];
             }
-            console.log(msgs);
+            //console.log(msgs);
             // is a good idea to insert data straight from the form
             // (i.e. the user) into the database?? certainly not.
             // push adds the message to the end of the array
@@ -109,7 +109,7 @@ Template.chat_page.events({
                 profile: Meteor.user().profile.username,
                 profileImg: Meteor.user().profile.avatar
             });
-            console.log(msgs);
+            //console.log(msgs);
             // reset the form
             event.target.chat.value = "";
             // put the messages array onto the chat object
