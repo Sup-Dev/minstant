@@ -79,6 +79,12 @@ Template.chat_page.helpers({
 
 });
 
+Template.chat_message.helpers({
+    user:function(){
+        return Meteor.user()._id;
+    }
+});
+
 Template.chat_page.events({
     // this event fires when the user sends a message on the chat page
     'submit .js-send-chat': function (event) {
@@ -90,13 +96,20 @@ Template.chat_page.events({
         if (chat) {// ok - we have a chat to use
             console.log("update chat");
             var msgs = chat.messages; // pull the messages property
+            console.log(msgs);
             if (!msgs) {// no messages yet, create a new array
                 msgs = [];
             }
+            console.log(msgs);
             // is a good idea to insert data straight from the form
             // (i.e. the user) into the database?? certainly not.
             // push adds the message to the end of the array
-            msgs.push({text: event.target.chat.value});
+            msgs.push({
+                text: event.target.chat.value,
+                profile: Meteor.user().profile.username,
+                profileImg: Meteor.user().profile.avatar
+            });
+            console.log(msgs);
             // reset the form
             event.target.chat.value = "";
             // put the messages array onto the chat object

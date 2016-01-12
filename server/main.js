@@ -3,7 +3,7 @@ Meteor.startup(function () {
         for (var i = 1; i < 9; i++) {
             var email = "user" + i + "@test.com";
             var username = "user" + i;
-            var avatar = "ava" + i + ".png"
+            var avatar = "ava" + i + ".png";
             console.log("creating a user with password 'test123' and username/ email: " + email);
             Meteor.users.insert({
                 profile: {username: username, avatar: avatar},
