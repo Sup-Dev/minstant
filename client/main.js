@@ -115,6 +115,9 @@ Template.chat_page.events({
             // put the messages array onto the chat object
             chat.messages = msgs;
             Meteor.call("updateChat", chat);
+            setTimeout(function () {
+                $('.emoticon').emoticonize()
+            }, 500);
         }
     }
 });
